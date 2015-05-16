@@ -4,10 +4,14 @@ app.directive('dirDisplay', function(){
   return {
     restrinct: 'E',
     templateUrl: 'app/directives/dirDisplay.html',
+    scope: {
+      setUser: '&',
+      user: '='
+    },
     link: function (scope, element, attributes) {
-
       element.on('click', function(){
         scope.showInfo = !scope.showInfo;
+        scope.setUser({user: scope.user});
         scope.$apply();
       });
     }

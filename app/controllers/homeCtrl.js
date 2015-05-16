@@ -1,6 +1,6 @@
 var app = angular.module('directivePractice');
 
-app.controller('homeCtrl', function($scope){
+app.controller('homeCtrl', function($scope, weatherService){
 
   $scope.users = [
     {
@@ -34,4 +34,14 @@ app.controller('homeCtrl', function($scope){
       city: "Phoenix"
     }
   ];
+
+  //$scope.currentUser = $scope.users[3];
+
+  $scope.getWeather = function(city) {
+    return weatherService.getWeather(city);
+  };
+
+  $scope.setUser = function(user) {
+    $scope.currentUser = user;
+  }
 });
